@@ -479,7 +479,7 @@ def plot(train_history):
 ```
 
 <p align='center'>
-  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png">
+  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"><br>
   <em>Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$)</em>
 </p>
 
