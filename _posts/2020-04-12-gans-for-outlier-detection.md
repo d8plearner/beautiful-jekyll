@@ -98,13 +98,9 @@ Let's stop for a second and try to analyze the relationship between the two cost
 
 Below is the plot of two functions; $log(x)$ and $log(1-x)$, in the interval $[0, 1]$.
 
-<center>
+![Log plot](/assets/gans-for-outlier-detection/log_plot.svg)
 
-| <img src='/assets/gans-for-outlier-detection/log_plot.svg'> |
-| :-------------------------------: |
-|    Figure 2: Log function plot    |
-
-</center>
+*Figure 2: Log function plot*
 
 We can see that, in the interval $[0, 1]$, maximizing $log(1-x)$ is the same as minimizing $log(x)$. Thus the generator's optimization problem can be rewritten as follows:
 
@@ -217,13 +213,9 @@ This is how our dataset looks like:
 
 And here is a plot of all the data points:
 
-<center>
-    
-| <img src='/assets/gans-for-outlier-detection/onecluster.png'/> |
-| :----------------------------------: |
-|  Figure 3: Onecluster dataset plot   |
+![Onecluster plot](/assets/gans-for-outlier-detection/onecluster.png)
 
-</center>
+*Figure 3: Onecluster dataset plot*
 
 ```python
 # map existing labels to integers
@@ -485,27 +477,22 @@ def plot(train_history):
     plt.legend(loc='best')
     plt.show()
 ```
+![Learning curves bias1](/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png)
 
-<center>
+*Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$)*
 
-| <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> | <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> |
-| :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$) | Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$) |
+![Learning curves bias1e-5](/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png)
 
-</center>
+*Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$)*
     
 Figures 4 and 5 represent the learning curves obtained after training with different initial values of the generator's bias. On the left figure, we can see that the model has over-fit since both the discriminator's training loss and the test *AUC* are very low. The generator's loss increase can be explained by the fact that it is generating data points that are easy for the discriminator to spot as outliers. On the right figure, it is what we generally expect from a GAN after training. At the beginning, the discriminator's loss is decreasing because the generator performs poorly. After the first 1000 epochs, the generator starts to fool the discriminator, which results in both losses changing their directions. After 2000 epochs of training, both networks begin to see their losses converging to a fixed value. The test *AUC* is pretty high as well, meaning that the discriminator did a good job when tested.
 
 Below is the result that I was been able to reproduce from the original code proposed by the authors, available in the github repository mentioned in the references:
 
-<center>
+![Original results](/assets/gans-for-outlier-detection/onecluster_tf.png)
 
-|         <img src="/assets/gans-for-outlier-detection/onecluster_tf.png"/>          |
-| :------------------------------------------------------: |
-| Figure 6: Original learning curves on Onecluster dataset |
+*Figure 6: Original learning curves on Onecluster dataset*
 
-</center>
-    
 The learning curves as well as the test *AUC* are pretty close to those we have obtained in Figure 5. The slight differences between them may be due to implementation differences between Keras and PyTorch in some functions, mainly in the initialization methods, as well as the different seeds used to initialize the weights.
 
 ### Conclusion
