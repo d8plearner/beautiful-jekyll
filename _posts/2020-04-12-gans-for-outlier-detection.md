@@ -34,10 +34,6 @@ This [neural networks' architecture](https://arxiv.org/abs/1406.2661), that was 
 
 The figure below depicts the GAN architecture:
 
-![GAN's architecture]()
-
-**
-
 <p align='center'>
   <img src="/assets/gans-for-outlier-detection/GAN.png"><br>
     <em>Figure 1: GAN's architecture. <a href="https://www.kdnuggets.com/2017/01/generative-adversarial-networks-hot-topic-machine-learning.html">Source Link</a></em>
