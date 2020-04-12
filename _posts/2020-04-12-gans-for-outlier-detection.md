@@ -27,7 +27,7 @@ The remainder of this post will be organized as follows:
 
 Without further ado, let's get started. 
 
-## Generative Adversarial Networks' architecture
+<h2>Generative Adversarial Networks' architecture</h2>
 
 In machine learning, two kinds of models exist; generative models and discriminative models. Given a data set of samples and their corresponding labels $$(X, y)$$, a discriminative model will learn the boundary between the different labels; the conditional probability $$P(y|X)$$, while a generative model will learn the probability distribution that generates a sample of a given class $$y$$, $$P(X|y)$$.
 
@@ -37,7 +37,7 @@ This [neural networks' architecture](https://arxiv.org/abs/1406.2661), that was 
 
 The figure below depicts the GAN architecture:
 
-|                <img src='./images/GAN.png'/>                 |
+|                <img src='/assets/gans-for-outlier-detection/GAN.png'/>                 |
 | :----------------------------------------------------------: |
 | Figure 1: GAN architecture. <u>[Source Link](https://www.kdnuggets.com/2017/01/generative-adversarial-networks-hot-topic-machine-learning.html)</u>​ |
 
@@ -89,7 +89,7 @@ Let's stop for a second and try to analyze the relationship between the two cost
 
 Below is the plot of two functions; $log(x)$ and $log(1-x)$, in the interval $[0, 1]$.
 
-| <img src='./images/log_plot.svg'> |
+| <img src='/assets/gans-for-outlier-detection/log_plot.svg'> |
 | :-------------------------------: |
 |    Figure 2: Log function plot    |
 
@@ -200,7 +200,7 @@ This is how our dataset looks like:
 
 And here is a plot of all the data points:
 
-| <img src='./images/onecluster.png'/> |
+| <img src='/assets/gans-for-outlier-detection/onecluster.png'/> |
 | :----------------------------------: |
 |  Figure 3: Onecluster dataset plot   |
 
@@ -465,7 +465,7 @@ def plot(train_history):
     plt.show()
 ```
 
-| <img src="./images/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> | <img src="./images/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> |
+| <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> | <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"/> |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$) | Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$) |
 
@@ -473,7 +473,7 @@ Figures 4 and 5 represent the learning curves obtained after training with diffe
 
 Below is the result that I was been able to reproduce from the original code proposed by the authors, available in the github repository mentioned in the references:
 
-|         <img src="./images/onecluster_tf.png"/>          |
+|         <img src="/assets/gans-for-outlier-detection/onecluster_tf.png"/>          |
 | :------------------------------------------------------: |
 | Figure 6: Original learning curves on Onecluster dataset |
 
