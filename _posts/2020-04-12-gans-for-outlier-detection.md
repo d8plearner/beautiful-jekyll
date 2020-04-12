@@ -311,7 +311,7 @@ class Discriminator(nn.Module):
 print(Discriminator(10, 120))
 print(Generator(10))
 ```
-
+<br>
 ```
 Discriminator(
   (model): Sequential(
