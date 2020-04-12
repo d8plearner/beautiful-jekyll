@@ -17,10 +17,10 @@ Traditionally, the outlier detection problem is seen as supervised learning prob
 
 The remainder of this post will be organized as follows:
 
-  1) Generative Adversarial Networks' architecture.
-  2) The mathematics behind Generative Adversarial Networks.
-  3) Framing the outlier detection problem.
-  4) Python implementation along with the results.
+1. Generative Adversarial Networks' architecture.
+2. The mathematics behind Generative Adversarial Networks.
+3. Framing the outlier detection problem.
+4. Python implementation along with the results.
 
 Without further ado, let's get started. 
 
