@@ -34,10 +34,13 @@ This [neural networks' architecture](https://arxiv.org/abs/1406.2661), that was 
 
 The figure below depicts the GAN architecture:
 
+<div style="text-align:center>
+
 ![GAN's architecture](/assets/gans-for-outlier-detection/GAN.png)
 
-{style="text-align:center"}
 *Figure 1: GAN's architecture. <u>[Source Link](https://www.kdnuggets.com/2017/01/generative-adversarial-networks-hot-topic-machine-learning.html)</u>*
+
+</div>
 
 We start by inputing some random numbers into the generator network. The later applies a series of matrix multiplication to output a fake sample. The discriminator's job is to take a sample, either real or generated, and output a probability on whether this given sample is real or fake. Concretely, the generator trains itself in order for the samples it generates to pass the discriminator's test; i.e. get the discriminator to classify fake samples as real. Whereas the discriminator trains itself in order to differ genuine from fake data. Both networks get better at their jobs as training progresses, until we finally have a generator that has become a master in faking and a discriminator that has become a master in noticing the nuance.
 
