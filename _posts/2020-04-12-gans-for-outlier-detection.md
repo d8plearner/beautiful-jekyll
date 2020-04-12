@@ -478,13 +478,15 @@ def plot(train_history):
     plt.show()
 ```
 
-![Learning curves bias1]("/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png")
+<figure>
+  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071449', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png">
+  <figcaption>Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$)</figcaption>
+</figure>
 
-*Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$)*
-
-![Learning curves bias1e-5]("/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png")
-
-*Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$)*
+<figure>
+  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png">
+  <figcaption>Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$)</figcaption>
+</figure>
     
 Figures 4 and 5 represent the learning curves obtained after training with different initial values of the generator's bias. On the left figure, we can see that the model has over-fit since both the discriminator's training loss and the test *AUC* are very low. The generator's loss increase can be explained by the fact that it is generating data points that are easy for the discriminator to spot as outliers. On the right figure, it is what we generally expect from a GAN after training. At the beginning, the discriminator's loss is decreasing because the generator performs poorly. After the first 1000 epochs, the generator starts to fool the discriminator, which results in both losses changing their directions. After 2000 epochs of training, both networks begin to see their losses converging to a fixed value. The test *AUC* is pretty high as well, meaning that the discriminator did a good job when tested.
 
