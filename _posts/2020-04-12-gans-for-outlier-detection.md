@@ -2,7 +2,7 @@
 css: github
 layout: post
 title: Generative Adversarial Networks For Outlier Detection
-gh-repo: qarchli/pytorch-gans-for-outlier-detection
+gh-repo: qarchli/pytorch-gan-for-outlier-detection
 gh-badge: [star, fork, follow]
 tags: [gan]
 comments: true
