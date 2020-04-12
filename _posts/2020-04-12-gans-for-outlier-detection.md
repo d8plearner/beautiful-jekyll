@@ -131,12 +131,11 @@ This approach saves us mainly from the problem of unbalanced data that we genera
 As it has been mentioned in the introduction, we are going to train a SO-GAAL model for outlier detection. As an added value of this post, I have decided to implement it using PyTorch, as the original implementation was in Keras with TensorFlow as the backend engine, and at the time of writing this post, I have not found any available PyTorch implementations.
 
 The implementation process will be as follows:
-
-  1. Importing modules and retrieving hyper-parameters from the command line (entered by the user).
-  2. Preparing the data (Extract Transform Load).
-  3. Building the model.
-  4. Training the model.
-  5. Analyzing the results.
+1. Importing modules and retrieving hyper-parameters from the command line.
+2. Preparing the data (Extract Transform Load).
+3. Building the model.
+4. Training the model.
+5. Analyzing the results.
 
 #### 1. Imports and hyper-parameters' retrieval from the command line
 
