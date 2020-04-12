@@ -34,7 +34,7 @@ This [neural networks' architecture](https://arxiv.org/abs/1406.2661), that was 
 
 The figure below depicts the GAN architecture:
 
-<div style="text-align:center>
+<div style="text-align:center">
 
 ![GAN's architecture](/assets/gans-for-outlier-detection/GAN.png)
 
