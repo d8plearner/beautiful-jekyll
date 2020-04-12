@@ -34,9 +34,14 @@ This [neural networks' architecture](https://arxiv.org/abs/1406.2661), that was 
 
 The figure below depicts the GAN architecture:
 
-![GAN's architecture](/assets/gans-for-outlier-detection/GAN.png)
+![GAN's architecture]()
 
-*Figure 1: GAN's architecture. [Source Link](https://www.kdnuggets.com/2017/01/generative-adversarial-networks-hot-topic-machine-learning.html)*
+**
+
+<p align='center'>
+  <img src="/assets/gans-for-outlier-detection/GAN.png"><br>
+    <em>Figure 1: GAN's architecture. <a href="https://www.kdnuggets.com/2017/01/generative-adversarial-networks-hot-topic-machine-learning.html">Source Link</a></em>
+</p>
 
 We start by inputing some random numbers into the generator network. The later applies a series of matrix multiplication to output a fake sample. The discriminator's job is to take a sample, either real or generated, and output a probability on whether this given sample is real or fake. Concretely, the generator trains itself in order for the samples it generates to pass the discriminator's test; i.e. get the discriminator to classify fake samples as real. Whereas the discriminator trains itself in order to differ genuine from fake data. Both networks get better at their jobs as training progresses, until we finally have a generator that has become a master in faking and a discriminator that has become a master in noticing the nuance.
 
@@ -98,9 +103,10 @@ Let's stop for a second and try to analyze the relationship between the two cost
 
 Below is the plot of two functions; $log(x)$ and $log(1-x)$, in the interval $[0, 1]$.
 
-![Log plot](/assets/gans-for-outlier-detection/log_plot.svg)
-
-*Figure 2: Log function plot*
+<p align='center'>
+  <img src="/assets/gans-for-outlier-detection/log_plot.svg"><br>
+  <em>Figure 2: Log function plot</em>
+</p>
 
 We can see that, in the interval $[0, 1]$, maximizing $log(1-x)$ is the same as minimizing $log(x)$. Thus the generator's optimization problem can be rewritten as follows:
 
@@ -213,9 +219,11 @@ This is how our dataset looks like:
 
 And here is a plot of all the data points:
 
-![Onecluster plot](/assets/gans-for-outlier-detection/onecluster.png)
+<p align='center'>
+  <img src="/assets/gans-for-outlier-detection/onecluster.png"><br>
+  <em>Figure 3: Onecluster dataset plot</em>
+</p>
 
-*Figure 3: Onecluster dataset plot*
 
 ```python
 # map existing labels to integers
@@ -483,18 +491,19 @@ def plot(train_history):
   <em>Figure 4: Learning curves on Onecluster dataset (generator's bias initialized to $1$)</em>
 </p>
 
-<figure>
-  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png">
-  <figcaption>Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$)</figcaption>
-</figure>
-    
+<p align='center'>
+  <img src="/assets/gans-for-outlier-detection/Run(run_id='202004071436', stop_epochs=1000, lr_d=0.01, lr_g=0.0001, decay=1e-06, momentum=0.9).png"><br>
+  <em>Figure 5: Learning curves on Onecluster dataset (generator's bias initialized to $1e-5$)</em>
+</p>
+
 Figures 4 and 5 represent the learning curves obtained after training with different initial values of the generator's bias. On the left figure, we can see that the model has over-fit since both the discriminator's training loss and the test *AUC* are very low. The generator's loss increase can be explained by the fact that it is generating data points that are easy for the discriminator to spot as outliers. On the right figure, it is what we generally expect from a GAN after training. At the beginning, the discriminator's loss is decreasing because the generator performs poorly. After the first 1000 epochs, the generator starts to fool the discriminator, which results in both losses changing their directions. After 2000 epochs of training, both networks begin to see their losses converging to a fixed value. The test *AUC* is pretty high as well, meaning that the discriminator did a good job when tested.
 
 Below is the result that I was been able to reproduce from the original code proposed by the authors, available in the github repository mentioned in the references:
 
-![Original results](/assets/gans-for-outlier-detection/onecluster_tf.png)
-
-*Figure 6: Original learning curves on Onecluster dataset*
+<p align='center'>
+  <img src="/assets/gans-for-outlier-detection/onecluster_tf.png"><br>
+  <em>Figure 6: Original learning curves on Onecluster dataset</em>
+</p>
 
 The learning curves as well as the test *AUC* are pretty close to those we have obtained in Figure 5. The slight differences between them may be due to implementation differences between Keras and PyTorch in some functions, mainly in the initialization methods, as well as the different seeds used to initialize the weights.
 
