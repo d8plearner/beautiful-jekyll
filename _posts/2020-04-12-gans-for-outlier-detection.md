@@ -27,8 +27,8 @@ The remainder of this post will be organized as follows:
 
 Without further ado, let's get started. 
 
-<h2>Generative Adversarial Networks' architecture</h2>
-
+## Generative Adversarial Networks' architecture
+<br>
 In machine learning, two kinds of models exist; generative models and discriminative models. Given a data set of samples and their corresponding labels $$(X, y)$$, a discriminative model will learn the boundary between the different labels; the conditional probability $$P(y|X)$$, while a generative model will learn the probability distribution that generates a sample of a given class $$y$$, $$P(X|y)$$.
 
 Generative Adversarial Networks (GANs) are a type of neural networks belonging to the class of generative models, as their name implies. They consist of two communicating neural networks: a generator and a discriminator. The generator takes as input a noise and returns a generated sample, while the discriminator's job is to learn the boundary between generated samples and real samples. Since GAN learn the probability distribution underlying the training data, we can then use them to generate a data point that does not necessarily belong to the training data but it is part of the range of possibilities and thus it can be a novel data point.
@@ -50,10 +50,13 @@ For mathematics nerds that are out there, this paragraph is for you. If you are 
 As you may already know, neural networks are optimized using an incremental process called gradient descent. Once the network has performed a forward-propagation, an output is returned, and is used to calculate the cost, defined as the difference between the network’s prediction and the desired output.
 
 The cost functions of both the discriminator $D$ and the generator $G$ are derived from the cross-entropy loss function defined as:
+
 $$
 L(\hat y, y) = y\space log(\hat y) + (1-y)\space log(1-\hat y)
 $$
+
 where
+
 $$
 - \space \hat y: \space \text{is the predicted probabilities}.
 \\
@@ -61,6 +64,7 @@ $$
 $$
 
 Let's start with the discriminator parameterized by $\theta_D$. If it is doing a good job, then for each sample $X$ drawn from the real data, it must output a probability $$\hat y = D(X)$$ that is close to $y = 0$, whereas for each noise $$z$$ given as input to the generator, it must output a probability $\hat y = D(G(z))$ that is close to $$ y = 1 $$, because it is a fake sample. Thus,  we can write:
+
 $$
 L(D(X), 0) = log(1-D(X))
 $$
@@ -70,21 +74,29 @@ L(D(G(z)), 1) = log(D(G(z)))
 $$
 
 These two quantities; equations (3) and (4), must be maximized in order for the discriminator to triumph. We can combine both of them in one expression, which is called the *discriminator's cost function*:
+
 $$
 L_D(x, G; \theta_D) = log(1-D(x)) + log(D(G(z)))
 $$
+
 Meaning that the discriminator's objective is to find the best parameters $\theta_D$ that maximizes its cost function. Thus the discriminator's optimization problem can be written as:
+
 $$
 \underset{\theta_D}{max}\space L_D(x, G; \theta_D)
 $$
+
 Now let's focus on the generator parameterized by $\theta_G$. The generator's job is to fool the discriminator, meaning that it has to get the later to classify each fake sample $$G(z)$$ as not fake; $$ y= 0$$. Thus we can write its cost function as follows: 
+
 $$
 L_G(z, D; \theta_G) = L(D(G(z)), 0) = log(1-D(G(z)))
 $$
+
 Meaning that the generator's objective is to find the best parameters $\theta_{G}$ that maximizes its cost function, thus its optimization problem can be written as:
+
 $$
 \underset{\theta_G}{max}\space L_G(z, D; \theta_G)
 $$
+
 Let's stop for a second and try to analyze the relationship between the two cost functions $L_D$ and $L_G$.
 
 Below is the plot of two functions; $log(x)$ and $log(1-x)$, in the interval $[0, 1]$.
@@ -94,13 +106,17 @@ Below is the plot of two functions; $log(x)$ and $log(1-x)$, in the interval $[0
 |    Figure 2: Log function plot    |
 
 We can see that, in the interval $[0, 1]$, maximizing $log(1-x)$ is the same as minimizing $log(x)$. Thus the generator's optimization problem can be rewritten as follows:
+
 $$
 \underset{\theta_G}{min}\space [log(D(G(z)))]
 $$
+
 Which is equivalent to:
+
 $$
 \underset{\theta_G}{min}\space L_D(x, G; \theta_D)
 $$
+
 This means that the generator is trying to minimize what the discriminator is trying to maximize **(*)**. This is called a **zero-sum game** (if one gains, another loses), and it is what motivates both of the networks to improve their functionalities as the training progresses.
 
 **(*)** A little clarification on this point: even if the discriminator's cost function has one more term than the generator's cost function, we said that the function being optimized is the same, how come ? The additional term $log(1-D(x))$ that is present in $L_{D}$ does not depend on the generator's parameters $\theta_G$, and thus it can safely be added to the generator's optimization problem as a constant with respect to $\theta_G$ that won't affect the final results.
